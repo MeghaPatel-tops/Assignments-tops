@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //Assign1
+        //alert("hello world")
+
+        //Assign2
+        let name = "Megha Patel"
+        let phonno = 990909099
+        let working = true
+        let lecture = undefined
+
+        
+        function checkUserDetails(){
+            let data = "Name:"+name+" \nphonno:"+phonno +" \nworking: "+working+ "\nlecture assign: "+lecture; 
+            console.log("Name:"+name+"  typeofvariable:"+typeof(name)+" \nphonno:"+phonno +"  typeofvariable:"+typeof(phonno)+" \nworking: "+working+"  typeofvariable:"+typeof(working)+ "\nlecture assign: "+lecture+"  typeofvariable:"+typeof(lecture))
+        }
+        function calc(){
+            let num1=document.getElementById('num1').value;
+            let num2=document.getElementById('num2').value;
+             let sum = num1+num2;
+             let mul= num1*num2;
+             let div= num1/num2;
+             let sub = num1-num2;
+             let result ="addition="+sum+"<br>Multiplication="+mul+"<br>div"+div+"<br>sub="+sub;
+             document.getElementById('calcresult').innerHTML=result
+            
+        }
+
+    </script>
+</head>
+<body>
+    <button onclick="checkUserDetails()">Click</button>
+    <fieldset>
+        <h1>Simple calculator</h1>
+        <input type="text" id="num1">
+    <input type="text" id="num2">
+    <button onclick="calc()">
+        Calculator
+    </button>
+    <p id="calcresult"> </p>
+    </fieldset>
+    
+    
+</body>
+</html>

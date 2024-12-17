@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Array  example</h1>
+    <script>
+        var fruites =["apple","banana","cherry"];
+        document.write("<h5>Initial Array</h5><br> ")
+        document.write(fruites);
+        document.write("<br>");
+
+        ;document.write("<h5>Add Mango to the end</h5><br> ")
+        fruites.push("Mango");
+        document.write(fruites)
+
+        document.write("<h5>Remove apple from first</h5><br> ")
+        fruites.shift();
+        document.write(fruites)
+
+        var numbersArray =[12,45,67,89,100,67,104];
+        document.write("<h5>Number array</h5><br>");
+            document.write(numbersArray);
+        var sum=0
+        for(var j =0 ;j< numbersArray.length; j++){
+            sum+= numbersArray[j];
+        }
+        document.write("<br>Sum of integer array= ");
+        document.write(sum);
+
+
+       
+
+    </script>
+    <hr>
+    <h1>object Example</h1>
+    <script>
+        const car ={
+            brand:"BMW",
+            modal:"2024ff1",
+            year:"2024"
+        }
+        document.write(JSON.stringify(car))
+
+        document.write("<br>    Brand Name:"+car.brand)
+        document.write("<br>    Modal Name:"+car.modal)
+        car.year = "2023";
+        document.write("<br>Add color:Gray property<br>");
+        car.color="gray";
+        document.write(JSON.stringify(car))
+    </script>
+    
+</body>
+</html>

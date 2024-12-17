@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="num1">
+    <input type="text" name="" id="num2">
+    <button onclick="division()">Find Division</button>
+    <script>
+        function division(){
+            const num1 = document.getElementById('num1').value;
+            const num2 = document.getElementById('num2').value;
+            try {
+                const ans = num1/num2;
+                document.write("ans="+ans)
+            } catch (error) {
+                document.write(error)
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function eventex(){
+            alert("Button clicked")
+        }
+    </script>
+</head>
+<body>
+    <button onclick="eventex()">Click</button>
+    <h1>
+        setTimeout example background color change after 2 sec
+        <script>
+            setTimeout(function backgroundChange(){
+                document.body.style.backgroundColor="gray";
+            },2000)
+        </script>
+    </h1>
+    <h1></h1>
+    <p id="clock"></p>
+    <script>
+
+
+function updateTime() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    const ans = seconds;
+    
+    const clockStr = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    document.getElementById('clock').innerHTML = clockStr;
+    setInterval(updateTime, 1000);
+}
+
+updateTime();
+
+</script>
+
+</body>
+</html>

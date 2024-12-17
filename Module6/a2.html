@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function findMinMax(){
+            var n1 = document.getElementById('num1').value;
+            var n2 = document.getElementById('num2').value;
+            var msg,neg;
+            // Use logical operators to check if both conditions (e.g., a > 10and b < 5)are
+            // true
+            if(n1 > 0 && n2 > 0){
+                    neg="Both number postive"
+                    document.getElementById('minmax').innerHTML = neg;
+            }
+
+            //===============================
+            if(n1===n2){
+                msg = "Both num equal";
+            }
+            else if(n1>n2){
+                msg = "N1 is greater"
+            }
+            
+            else{
+                msg= "N2 is greater"
+            }
+            document.getElementById('minmax').innerHTML = msg;
+        }
+        function findPositive(){
+            var number1 = document.getElementById('num3').value;
+            if(number1==0){
+                result = "Number is 0";
+            }
+            else if(number1>0){
+                result = "Number is positive";
+            }
+            else if(number1<0){
+                result = "Number is negative";
+            }
+            document.getElementById('posneg').innerHTML = result;
+        }
+        function findWeekDay(){
+            var day = document.getElementById('num4').value;
+            day = parseInt(day)
+            switch(day){
+                case 1:{
+                    data = "Monday";
+                    break;
+                }
+                case 2:{
+                    data = "Tuesday";
+                    break;
+                }
+                case 3:{
+                    data = "wednesday";
+                    break;
+                }
+                case 4:{
+                    data = "thursday";
+                    break;
+                }
+                case 5:{
+                    data = "friday";
+                    break;
+                }
+                case 6:{
+                    data = "Saturday";
+                    break;
+                }
+                case 7:{
+                    data = "sunday";
+                    break;
+                }
+                default:{
+                    data = "Wrong choice";
+                    break;
+                }
+            }
+            document.getElementById('weekday').innerHTML = data;
+        }
+    </script>
+</head>
+<body>
+   <fieldset>
+        <h1>Find number wheter is greater or not</h1>
+        <input type="text" name="" id="num1">
+        <input type="text" name="" id="num2">
+        <p style="color: green;" id="minmax"></p>
+        <button onclick="findMinMax()">Click</button>
+   </fieldset>
+   <fieldset>
+    <h1>Find number wheter is Postive negative or zero</h1>
+    <input type="text" name="" id="num3">
+    
+    <p style="color: green;" id="posneg"></p>
+    <button onclick="findPositive()">Click</button>
+</fieldset>
+<fieldset>
+    <h1>Find Day of week pres  Between 1 to 7</h1>
+    <input type="text" name="" id="num4">
+    
+    <p style="color: green;" id="weekday"></p>
+    <button onclick="findWeekDay()">Click</button>
+</fieldset>
+</body>
+</html>
