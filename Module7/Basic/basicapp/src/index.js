@@ -9,6 +9,10 @@ import Welcome from './components/Welcome';
 import Counter from './components/Counter';
 import Userinfo from './components/Userinfo';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Loginform from './components/Loginform';
+import FruitList from './components/FruitList';
+import UserRegistraion from './components/UserRegistraion';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -59,6 +63,30 @@ else if(pathName==="/person"){
     <React.StrictMode>
       <App />
       <Person person ={{name:"megha",age:"29",phnno:"900900909"}} />    
+    </React.StrictMode>
+  );
+}
+else if(pathName==="/login"){
+  root.render(
+    <React.StrictMode>
+      <App />
+      <Loginform/>    
+    </React.StrictMode>
+  );
+}
+else if(pathName==="/listexample"){
+  root.render(
+    <React.StrictMode>
+      <App />
+      <FruitList/>    
+    </React.StrictMode>
+  );
+}
+else if(pathName==="/registration"){
+  root.render(
+    <React.StrictMode>
+      <App />
+      <UserRegistraion/>    
     </React.StrictMode>
   );
 }

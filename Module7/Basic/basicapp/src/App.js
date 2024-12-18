@@ -20,6 +20,15 @@ function App() {
                 <NavItem>
                 <NavLink href="/person">Person Infromation</NavLink>
                 </NavItem>
+                <NavItem>
+                <NavLink href="/login">Login App</NavLink>
+                </NavItem>
+                <NavItem>
+                <NavLink href="/listexample">ListExample</NavLink>
+                </NavItem>
+                <NavItem>
+                <NavLink href="/registration">FormExample</NavLink>
+                </NavItem>
             </Nav>
     </div>
   );
