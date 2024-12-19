@@ -29,7 +29,7 @@ export default class ClassComp extends Component {
     return (
       <div>
         <Container>
-            
+            <h1>Product With class Component</h1>
             <Row >
                 {
                     this.state.products.map((product,index)=>
