@@ -20,7 +20,7 @@ const NavBar = () => {
                 <NavLink to="/counterapp">Counter App</NavLink>
                 </li>
                 <li>
-                <NavLink to="/users">Users</NavLink>
+                <NavLink to="/viewuser">Users</NavLink>
                 </li>
             </ul>
         </div>   

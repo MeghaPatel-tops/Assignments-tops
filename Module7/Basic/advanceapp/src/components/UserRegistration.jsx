@@ -1,20 +1,30 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { Button, Card, CardBody, CardHeader, Container, FormGroup, Input, Label } from 'reactstrap'
-
+import { useNavigate, useParams } from "react-router";
+import {db} from './firebase';
+import {collection, addDoc} from 'firebase/firestore';
+    
 function UserRegistration() {
+    const navigate  = useNavigate();
     const [userData , setUserData] = useState({});
+    const userCollection= collection(db,"users")
+
     const handleChange = (e) =>{
         const {name,value}=e.target;
         setUserData((prevValues)=>({
             ...prevValues,
             [name]:value
         }))
+        
     }
     const handleClick=async()=>{
        try {
-            const result = await axios.post(`http://localhost:8000/Users/`,userData)
+            console.log(db)
+            const result = await addDoc(userCollection,userData)
+            //const result = await axios.post(`http://localhost:8000/Users/`,userData)
             console.log(result)
+           // navigate('/viewuser')
        } catch (error) {
             console.log(error)
        }

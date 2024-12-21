@@ -1,11 +1,17 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useRef, useState} from 'react'
 import { Button, Card, CardBody, CardHeader, Container, FormGroup, Input, Label } from 'reactstrap'
 import { useNavigate, useParams } from "react-router";
 import axios from 'axios';
 
 function Edituser() {
-    const [userData , setUserData] = useState({});
-    const [editdata,setEditData] = useState({})
+   
+    const [editdata,setEditData] = useState({
+        username:"",
+        email:"",
+        password:"",
+        phnono:""
+    })
+
     const {id} = useParams();
     const navigate  = useNavigate();
 
@@ -14,23 +20,30 @@ function Edituser() {
             try {
                 const editData= await axios.get(`http://localhost:8000/Users/${id}`)
                 const result = editData.data;
-                setEditData(result)
+                setEditData(()=>({
+                    ...editData,
+                    username:result.username,
+                    email:result.email,
+                    password:result.password,
+                    phnono:result.phnono
+
+                }))
                 
             } catch (error) {
                 console.log(error)
             }
         }
-    })
+    },[])
     const handleChange = (e) =>{
         const {name,value}=e.target;
-        setUserData((prevValues)=>({
-            ...prevValues,
+        setEditData(()=>({
+            ...editdata,
             [name]:value
         }))
     }
     const handleClick=async()=>{
        try {
-            const result = await axios.put(`http://localhost:8000/Users/${id}`,userData)
+            const result = await axios.put(`http://localhost:8000/Users/${id}`,editdata)
             console.log(result)
             navigate('/viewuser')
        } catch (error) {
@@ -48,15 +61,15 @@ function Edituser() {
                 <CardBody>
                     <FormGroup>
                         <Label>UserName</Label>
-                        <Input type='text' name='username' onChange={handleChange} value={editdata.username}></Input>
+                        <Input type='text' name='username' onChange={handleChange} value={editdata.username}  ></Input>
                     </FormGroup>
                     <FormGroup>
                         <Label>Email</Label>
-                        <Input type='email' name='email' onChange={handleChange} value={editdata.email}></Input>
+                        <Input type='email' name='email'  value={editdata.email} onChange={handleChange}></Input>
                     </FormGroup>
                     <FormGroup>
                         <Label>Password</Label>
-                        <Input type='password' name='password' onChange={handleChange} value={editdata.password}></Input>
+                        <Input type='password' name='password' onChange={handleChange} value={editdata.password }></Input>
                     </FormGroup>
                     <FormGroup>
                         <Label>Phone Number</Label>
