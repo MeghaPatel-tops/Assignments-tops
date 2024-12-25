@@ -20,11 +20,10 @@ function UserRegistration() {
     }
     const handleClick=async()=>{
        try {
-            console.log(db)
-            const result = await addDoc(userCollection,userData)
-            //const result = await axios.post(`http://localhost:8000/Users/`,userData)
+            
+            const result = await axios.post(`http://localhost:8000/Users/`,userData)
             console.log(result)
-           // navigate('/viewuser')
+            navigate('/viewuser')
        } catch (error) {
             console.log(error)
        }

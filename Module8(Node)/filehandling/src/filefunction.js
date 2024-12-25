@@ -1,5 +1,10 @@
 var fs = require('fs')
 
+const displayMenu = () =>{
+    const menu =`press 1 for write data into file \n press two read data \n press 3 for append data`;
+    return menu;
+}
+
 const createFile =()=>{
     fs.writeFile("test.text","First file ",(err)=>{
         if(err){
@@ -47,4 +52,12 @@ const appendFileFunction = ()=>{
     })
 }
 
-module.exports = {createFile,readFileFunction,appendFileFunction,filerenameFunction}
+const deleteFile=()=>{
+    fs.unlink("test.text",(err)=>{
+        if(err)
+            throw err;
+        console.log("file deleted")
+    })
+}
+
+module.exports = {createFile,readFileFunction,appendFileFunction,filerenameFunction,displayMenu,deleteFile}
