@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 const nodemailer = require('nodemailer')
 
+
 const userRegistration=async(req,res,cb)=>{
    try {
     const salt = await bcrypt.genSalt();
@@ -14,7 +15,9 @@ const userRegistration=async(req,res,cb)=>{
         username:req.body.username,
         email:req.body.email,
         password:hashPass,
-        contactno:req.body.contactno}
+        contactno:req.body.contactno,
+        image:req.file.filename
+    }
     );
     const response = await User.save();
     const tokenSecret = process.env.JWT_SECRET_KEY;

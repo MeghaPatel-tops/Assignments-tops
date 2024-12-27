@@ -1,9 +1,26 @@
 const express = require('express')
 const UserController = require('../Controller/UserController')
 const authenticateToken = require('../Middleware/Auth')
+const multer = require('multer');
 const router = express.Router();
+let path = require('path')
+//file upload create Storage
 
-router.post('/register',(req,res)=>{
+const pathname = path.join(__dirname,'../uploads')
+console.log(pathname)
+const storage = multer.diskStorage({
+     destination:(req,file,cb)=>{
+        cb(null,pathname)
+     },
+     filename:(req,file,cb)=>{
+        cb(null,file.originalname)
+     }
+})
+
+
+const uploadFile = multer({storage})
+router.post('/register',uploadFile.single('file'),(req,res)=>{
+     console.log(pathname)
      UserController.userRegistration(req,res,(data,err)=>{
           if(data){
                res.status(200).json({"stscode":1,"msg":"User successfully inserted","user":data});
