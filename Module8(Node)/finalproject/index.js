@@ -7,10 +7,13 @@ const userRoutes = require("./Routes/userroutes")
 const bodyparser = require('body-parser')
 const db = require('./Modal/db')
 const logMiddleware = require('./Middleware/logmiddleware')
+const rateLimitChecker = require('./Middleware/ratelimiter')
+
 
 app.use(bodyparser.urlencoded({ extended: true }))
 app.use(bodyparser.json())
 app.use(logMiddleware)
+app.use(rateLimitChecker);
 
 var port = process.env.PORT
 
