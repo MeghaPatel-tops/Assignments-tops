@@ -1,8 +1,11 @@
-var mongoose = require('mongoose')
+
 var UserModal = require('../Modal/UserModal')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 const nodemailer = require('nodemailer')
+
+
+
 
 
 const userRegistration=async(req,res,cb)=>{
@@ -94,6 +97,7 @@ const loginUser = async(req,res,cb)=>{
                     time:Date(),
                     userId:User._id
                 }
+                req.session.user = User;
                 const token = jwt.sign(data,tokenSecret,{ expiresIn: "1h" });
                 cb({"userId":User._id,"email":User.email,"token":token});
             }
@@ -136,4 +140,35 @@ const sendMails = async(req,res,cb)=>{
          });
 }
 
-module.exports ={userRegistration,viewUsers,findUserId,deleteUser,editUser,loginUser,sendMails}
+const profileManage = async(req,res,cb)=>{
+    try {
+        const user = req.session.user;
+        if(user){
+            cb(user)
+        }
+        else{
+            cb({"msg":"please login"})
+        }
+        
+    } catch (error) {
+        cb(undefined,error)
+    }
+}
+
+const userLogout = async(req,res,cb)=>{
+    
+    if(req.session.user){
+        console.log(req.session.user);
+        req.session.destroy((err)=>{
+            if(err){
+                cb(undefined,err)
+                console.log(err)
+            }
+            else{
+                cb({"msg":"Logged Out!"})
+            }
+        })
+    }
+}
+
+module.exports ={userRegistration,viewUsers,findUserId,deleteUser,editUser,loginUser,sendMails,profileManage,userLogout}

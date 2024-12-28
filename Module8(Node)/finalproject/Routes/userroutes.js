@@ -25,7 +25,7 @@ router.post('/register',uploadFile.single('file'),(req,res)=>{
           if(data){
                res.status(200).json({"stscode":1,"msg":"User successfully inserted","user":data});
           }
-          if(err){
+          else{
                res.status(500).json({"stscode":0,"msg":err})
           }
      });
@@ -36,7 +36,7 @@ router.get('/viewuser',(req,res)=>{
           if(data){
                res.status(200).json({"stscode":1,"users":data});
           }
-          if(err){
+          else{
                res.status(500).json({"stscode":0,"msg":err})
           }
 
@@ -50,7 +50,7 @@ router.get('/singleuser/:id',(req,res)=>{
           if(data){
                res.status(200).json({"stscode":1,"user":data});
           }
-          if(err){
+          else{
                res.status(500).json({"stscode":0,"msg":err})
           }
      })
@@ -61,7 +61,7 @@ router.delete('/deleteuser/:id',(req,res)=>{
           if(data){
                res.status(200).json({"stscode":1,"user":data});
           }
-          if(err){
+          else{
                res.status(500).json({"stscode":0,"msg":err})
           }
      })
@@ -72,7 +72,7 @@ router.put('/edituser/:id',(req,res)=>{
           if(data){
                res.status(200).json({"stscode":1,"user":data});
           }
-          if(err){
+          else{
                res.status(500).json({"stscode":0,"msg":err})
           }
      })
@@ -83,7 +83,7 @@ router.post('/login',(req,res)=>{
           if(data){
                res.status(200).json({"stscode":1,"user":data});
           }
-          if(err){
+          else{
                res.status(500).json({"stscode":0,"msg":err})
           }
      })
@@ -98,7 +98,30 @@ router.get('/sendmail',(req,res)=>{
           if(data){
                res.status(200).json({"stscode":1,"user":data});
           }
-          if(err){
+          else{
+               res.status(500).json({"stscode":0,"msg":err})
+          }
+     })
+})
+
+router.get('/profile',(req,res)=>{
+     UserController.profileManage(req,res,(data,err)=>{
+          if(data){
+               res.status(200).json({"stscode":1,"user":data});
+          }
+          else{
+               res.status(500).json({"stscode":0,"msg":err})
+          }
+     })
+})
+
+router.get('/logout',(req,res)=>{
+     
+     UserController.userLogout(req,res,(data,err)=>{
+          if(data){
+               res.status(200).json({"stscode":1,"user":data});
+          }
+          else{
                res.status(500).json({"stscode":0,"msg":err})
           }
      })

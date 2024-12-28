@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container" >
+  <h2>Product Details</h2>
+  <p align="right"><a href="/product/productadd" class="btn btn-primary">Add New</a></p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ProductName</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th colspan="2">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {{#each products}}
+            <tr>
+                <td>{{this.productname}}</td>
+                <td>{{this.price}}</td>
+                <td>{{this.qty}}</td>
+                <td>{{this.description}}</td>
+                <td><img src="/public/{{this.image}}" alt="" height="100px" width="100px"></td>
+                <td><a href="/product/delete/{{this._id}}" class="btn btn-danger">Delete</a></td>
+                <td><a href="/product/edit/{{this._id}}" class="btn btn-success">Edit</a></td>
+            </tr>
+        {{/each}}
+     
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
